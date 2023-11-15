@@ -42,3 +42,5 @@ W = Z%*%solve(T)
 distances = dist(W)
 
 sorted_distances = sort(distances, decreasing = TRUE)
+
+# hi
