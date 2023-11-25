@@ -56,6 +56,7 @@ yhat <- model$fit
 # abline(h=0, col = "red")
 
 # Plots of Residuals versus the Transformed Regressors
+
 transformed_y <- log(y)^2
 
 transformed_X1 <- log(X1)
