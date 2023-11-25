@@ -27,8 +27,9 @@ yhat <- model$fit
 # 
 # plot(yhat, t, col="blue", xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted Values")
 # abline(h=0, col="red")
-
-# Plots of Residuals versus the Regressors
+# 
+# # Plots of Residuals versus the Regressors
+# 
 # plot(X1, t, col = "blue", xlab = "x1", ylab = "Residuals", main = "Residuals vs x1")
 # abline(h=0, col = "red")
 # plot(X2, t, col = "blue", xlab = "x2", ylab = "Residuals", main = "Residuals vs x2")
@@ -76,6 +77,8 @@ transformed_model <- lm(transformed_y ~ transformed_X1 + transformed_X2 +
                                transformed_X7 + transformed_X8 +
                                transformed_X9 + transformed_X10+
                                transformed_X11 + transformed_X12)
+t <- rstudent(transformed_model)
+yhat <- transformed_model$fit
 
 qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
 qqline(transformed_model$resid, col=2)
