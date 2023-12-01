@@ -1,5 +1,4 @@
 library(car)
-library(agricolae)
 
 data <- read.table("data/data_estimation_random.txt", header = FALSE)
 
@@ -16,6 +15,11 @@ X9 <- data$V10
 X10 <- ifelse(data$V12 == 1, 1, 0)
 X11 <- ifelse(data$V12 == 2, 1, 0)
 X12 <- ifelse(data$V12 == 3, 1, 0)
+
+model <- lm(y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10 + X11 + X12)
+
+t <- rstudent(model)
+yhat <- model$fit
 
 transformed_y <- log(y)^2
 
@@ -39,20 +43,15 @@ transformed_model <- lm(transformed_y ~ transformed_X1 + transformed_X2 +
                                transformed_X9 + transformed_X10+
                                transformed_X11 + transformed_X12)
 
+t <- rstudent(transformed_model)
+yhat <- transformed_model$fit
 
-# Checking Equal Variance Assumption via Bartlett's Test
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X2)
-bartlett.test(transformed_model$resid, transformed_X3)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
-bartlett.test(transformed_model$resid, transformed_X1)
+par(mfrow=c(1,1))
+qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
+qqline(transformed_model$resid, col=2)
+
+plot(transformed_model$fitted, transformed_model$resid, col="blue", xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted Values for Transformed Model")
+abline(h=0, col="red")
+
 
 

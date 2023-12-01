@@ -78,9 +78,11 @@ transformed_model <- lm(transformed_y ~ transformed_X1 + transformed_X2 +
                                transformed_X7 + transformed_X8 +
                                transformed_X9 + transformed_X10+
                                transformed_X11 + transformed_X12)
+
 t <- rstudent(transformed_model)
 yhat <- transformed_model$fit
 
+par(mfrow=c(1,1))
 qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
 qqline(transformed_model$resid, col=2)
 
@@ -89,40 +91,41 @@ abline(h=0, col="red")
 
 # Plot of Residuals vs Regressors
 
-plot(transformed_X1, t, col = "blue", xlab = "Transformed x1", ylab = "Residuals", main = "Residuals vs Transformed x1")
-abline(h=0, col = "red")
-
-plot(transformed_X2, t, col = "blue", xlab = "Transformed x2", ylab = "Residuals", main = "Residuals vs Transformed x2")
-abline(h=0, col = "red")
-
-plot(transformed_X3, t, col = "blue", xlab = "Transformed x3", ylab = "Residuals", main = "Residuals vs Transformed x3")
-abline(h=0, col = "red")
- 
-plot(transformed_X4, t, col = "blue", xlab = "Transformed x4", ylab = "Residuals", main = "Residuals vs Transformed x4")
-abline(h=0, col = "red")
-
-plot(transformed_X6, t, col = "blue", xlab = "Transformed x6", ylab = "Residuals", main = "Residuals vs Transformed x6")
-abline(h=0, col = "red")
-
-plot(transformed_X7, t, col = "blue", xlab = "Transformed x7", ylab = "Residuals", main = "Residuals vs Transformed x7")
-abline(h=0, col = "red")
-
-plot(transformed_X8, t, col = "blue", xlab = "Transformed x8", ylab = "Residuals", main = "Residuals vs Transformed x8")
-abline(h=0, col = "red")
-
-plot(transformed_X9, t, col = "blue", xlab = "Transformed x9", ylab = "Residuals", main = "Residuals vs Transformed x9")
-abline(h=0, col = "red")
-
-plot(transformed_X10, t, col = "blue", xlab = "Transformed x10", ylab = "Residuals", main = "Residuals vs Transformed x10")
-abline(h=0, col = "red")
-
-plot(transformed_X11, t, col = "blue", xlab = "Transformed x11", ylab = "Residuals", main = "Residuals vs Transformed x11")
-abline(h=0, col = "red")
-
-plot(transformed_X12, t, col = "blue", xlab = "Transformed x12", ylab = "Residuals", main = "Residuals vs Transformed x12")
-abline(h=0, col = "red")
-
-#avPlots(transformed_model)
-crPlots(transformed_model)
-
+# plot(transformed_X1, t, col = "blue", xlab = "Transformed x1", ylab = "Residuals", main = "Residuals vs Transformed x1")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X2, t, col = "blue", xlab = "Transformed x2", ylab = "Residuals", main = "Residuals vs Transformed x2")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X3, t, col = "blue", xlab = "Transformed x3", ylab = "Residuals", main = "Residuals vs Transformed x3")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X4, t, col = "blue", xlab = "Transformed x4", ylab = "Residuals", main = "Residuals vs Transformed x4")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X6, t, col = "blue", xlab = "Transformed x6", ylab = "Residuals", main = "Residuals vs Transformed x6")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X7, t, col = "blue", xlab = "Transformed x7", ylab = "Residuals", main = "Residuals vs Transformed x7")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X8, t, col = "blue", xlab = "Transformed x8", ylab = "Residuals", main = "Residuals vs Transformed x8")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X9, t, col = "blue", xlab = "Transformed x9", ylab = "Residuals", main = "Residuals vs Transformed x9")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X10, t, col = "blue", xlab = "Transformed x10", ylab = "Residuals", main = "Residuals vs Transformed x10")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X11, t, col = "blue", xlab = "Transformed x11", ylab = "Residuals", main = "Residuals vs Transformed x11")
+# abline(h=0, col = "red")
+# 
+# plot(transformed_X12, t, col = "blue", xlab = "Transformed x12", ylab = "Residuals", main = "Residuals vs Transformed x12")
+# abline(h=0, col = "red")
+# 
+# #avPlots(transformed_model)
+# crPlots(transformed_model)
+# layout(matrix(1:4,2,2))
+# plot(transformed_model)
 
