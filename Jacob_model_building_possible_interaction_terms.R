@@ -44,8 +44,67 @@ transformed_model <- lm(transformed_y ~ transformed_X1 + transformed_X2 +
                           transformed_X9 + transformed_X10+
                           transformed_X11 + transformed_X12)
 
+#Let's consider possible interaction terms
+# Sparsity of effects principle dictates that most likely higher order
+# Interactions are not typically significant 
+transformed_model = lm(transformed_y ~ transformed_X1 + transformed_X2 +
+                                          transformed_X3  + transformed_X4 +
+                                          transformed_X5 + transformed_X6 +
+                                          transformed_X7 + transformed_X8 +
+                                          transformed_X9 + transformed_X10+
+                                          transformed_X11 + transformed_X12)
+                       
 
+# transformed_model_geographic_interactions = lm(transformed_y ~
+#                      (transformed_X1 + transformed_X2 +
+#                      transformed_X3  + transformed_X4 +
+#                      transformed_X5 + transformed_X6 +
+#                      transformed_X7 + transformed_X8 +
+#                      transformed_X9) * transformed_X10
+#                      +
+#                        (transformed_X1 + transformed_X2 +
+#                           transformed_X3  + transformed_X4 +
+#                           transformed_X5 + transformed_X6 +
+#                           transformed_X7 + transformed_X8 +
+#                           transformed_X9) * transformed_X11 +
+#                      (transformed_X1 + transformed_X2 +
+#                          transformed_X3  + transformed_X4 +
+#                          transformed_X5 + transformed_X6 +
+#                          transformed_X7 + transformed_X8 +
+#                          transformed_X9) * transformed_X12)
+# anova(transformed_model_geographic_interactions)
+# summary(transformed_model_geographic_interactions)
 
+# transformed_model_physician_interactions = lm(transformed_y ~ (transformed_X1 + transformed_X2 +
+#                                                 transformed_X3  + transformed_X4 +
+#                                                 transformed_X5 + transformed_X6 +
+#                                                 transformed_X7 + transformed_X8 +
+#                                                 transformed_X9 + transformed_X10+
+#                                                 transformed_X11 + transformed_X12) * transformed_X5)
+#                                                  
+# anova(transformed_model_physician_interactions)
 
+# transformed_model_hospital_beds = lm(transformed_y ~ (transformed_X1 + transformed_X2 +
+#                          transformed_X3  + transformed_X4 +
+#                          transformed_X5 + transformed_X6 +
+#                          transformed_X7 + transformed_X8 +
+#                          transformed_X9 + transformed_X10+
+#                          transformed_X11 + transformed_X12) * transformed_X6)
+# anova(transformed_model_hospital_beds)
 
+# transformed_model_highschool =lm(transformed_y ~ (transformed_X1 + transformed_X2 +
+#                                                         transformed_X3  + transformed_X4 +
+#                                                         transformed_X5 + transformed_X6 +
+#                                                         transformed_X7 + transformed_X8 +
+#                                                         transformed_X9 + transformed_X10+
+#                                                         transformed_X11 + transformed_X12) * transformed_X7)
+# anova(transformed_model_highschool)
+
+# transformed_model_labor =lm(transformed_y ~ (transformed_X1 + transformed_X2 +
+#                                                     transformed_X3  + transformed_X4 +
+#                                                     transformed_X5 + transformed_X6 +
+#                                                     transformed_X7 + transformed_X8 +
+#                                                     transformed_X9 + transformed_X10+
+#                                                     transformed_X11 + transformed_X12) * transformed_X8)
+# anova(transformed_model_labor)
 
