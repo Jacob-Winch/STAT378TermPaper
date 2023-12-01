@@ -96,9 +96,4 @@ final_transformed_model = lm(transformed_y ~
 anova(final_transformed_model)
 summary(final_transformed_model)
 
-final_transformed_model2 = lm(transformed_y ~
-                               transformed_X2 + transformed_X5 +
-                               transformed_X11 +
-                               transformed_X7 + transformed_X9 +
-                               transformed_X8 +
-                               transformed_X10 * transformed_X6)
+
