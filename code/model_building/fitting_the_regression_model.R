@@ -11,9 +11,9 @@ X6 <- data$x6
 X7 <- data$x7
 X8 <- data$x8
 X9 <- data$x9
-X10 <- ifelse(data$V12 == 1, 1, 0)
-X11 <- ifelse(data$V12 == 2, 1, 0)
-X12 <- ifelse(data$V12 == 3, 1, 0)
+X10 <- data$x10
+X11 <- data$x11
+X12 <- data$x12
 
 model <- lm(y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10 + X11 + X12)
 
