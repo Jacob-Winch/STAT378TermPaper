@@ -1,7 +1,6 @@
-library(qpcR)
 
 data <- read.table("data/data_estimation_random.txt", header = FALSE)
-data_P <- read.table("data/data_prediction_random.txt", header = FALSE)
+
 
 y <- data$V11
 X1 <- data$V2

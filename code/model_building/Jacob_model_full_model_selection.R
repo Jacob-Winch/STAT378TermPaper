@@ -87,6 +87,9 @@ full_transformed_model = lm(transformed_y ~ transformed_X1 + transformed_X2 +
 # anova(stepwise)
 # summary(stepwise)
 
+k <- ols_step_all_possible(full_transformed_model)
+k
+
 final_transformed_model = lm(transformed_y ~
                                transformed_X2 + transformed_X5 +
                                transformed_X10 + transformed_X11 +

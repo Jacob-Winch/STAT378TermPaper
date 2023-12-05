@@ -1,7 +1,7 @@
 library(olsrr)
 
 
-data <- read.table("data/data_estimation_random.txt", header = FALSE)
+data <- read.table("data/Term Paper -  Fall 2023 - Data.txt", header = FALSE)
 
 y <- data$V11
 X1 <- data$V2
@@ -33,11 +33,14 @@ transformed_X11 <- X11
 transformed_X12 <- X12
 
 final_transformed_model = lm(transformed_y ~
-                               transformed_X2 + transformed_X5 +
-                               transformed_X10 + transformed_X11 +
-                               transformed_X7 + transformed_X9 +
-                               transformed_X6 + transformed_X8 +
-                               transformed_X10 * transformed_X6)
+                               transformed_X2 )
 
-ols_coll_diag(final_transformed_model)
+# + transformed_X5 +
+#   transformed_X10 + transformed_X11 +
+#   transformed_X7 + transformed_X9 +
+#   transformed_X6 + transformed_X8 +
+#   transformed_X10 * transformed_X6
+summary(final_transformed_model)
+
+
 

@@ -194,16 +194,19 @@ while (length(prediction_points) < 25){
 
 estimation_points = c(estimation_points, as.integer(remaining_points))
 
+
 estimation_points 
 
 prediction_points
 
-x_E = x[-prediction_points,]
+data = data.frame(y, x)
 
-x_P = x[prediction_points,]
+E = data[-prediction_points,]
 
-write.csv(x_E, "data_estimation_duplex.txt", row.names = FALSE)
+P = data[prediction_points,]
 
-write.csv(x_P, "data_prediction_duplex.txt", row.names = FALSE)
+write.csv(E, "data_estimation_duplex.txt", row.names = FALSE)
+
+write.csv(P, "data_prediction_duplex.txt", row.names = FALSE)
 
 
