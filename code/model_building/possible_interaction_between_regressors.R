@@ -1,5 +1,6 @@
-library(car)
 library(lmtest)
+library(MASS)
+library(car)
 
 data <- read.table("data/data_estimation_duplex.txt", header = TRUE, sep = ",")
 
@@ -19,25 +20,19 @@ x12 <- data$x12
 
 model <- lm(y ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 + x12)
 
-summary(model)
-
-# Plots of Residuals versus the Transformed Regressors
-transformed_y <- log(y)^4
-
-transformed_x1 <- log(x1)
-transformed_x2 <- log(x2)
+transformed_y <- 1/log(y)
+transformed_x1 <- 1/sqrt(x1)
+transformed_x2 <- sqrt(x2)
 transformed_x3 <- x3
-transformed_x4 <- x4
-transformed_x5 <- x5
-transformed_x6 <- log(x6)
+transformed_x4 <- log(x4)
+transformed_x5 <- log(x5)
+transformed_x6 <- sqrt(x6)
 transformed_x7 <- x7
-transformed_x8 <- log(x8)
-transformed_x9 <- log(x9)
+transformed_x8 <- 1/log(x8)
+transformed_x9 <- sqrt(x9)
 transformed_x10 <- x10
 transformed_x11 <- x11
 transformed_x12 <- x12
-
-
 
 transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
                          transformed_x3  + transformed_x4 +
@@ -49,82 +44,34 @@ transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
 summary(transformed_model)
 
 
+transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
+                         transformed_x3  + transformed_x4 +
+                         transformed_x5 + transformed_x6 +
+                         transformed_x7 + transformed_x8 +
+                         transformed_x9 + transformed_x10+
+                         transformed_x11 + transformed_x12)
 
-# transformed_model_geographic_interactions = lm(transformed_y ~
-#                      (transformed_X1 + transformed_X2 +
-#                      transformed_X3  + transformed_X4 +
-#                      transformed_X5 + transformed_X6 +
-#                      transformed_X7 + transformed_X8 +
-#                      transformed_X9) * transformed_X10
-#                      +
-#                        (transformed_X1 + transformed_X2 +
-#                           transformed_X3  + transformed_X4 +
-#                           transformed_X5 + transformed_X6 +
-#                           transformed_X7 + transformed_X8 +
-#                           transformed_X9) * transformed_X11 +
-#                      (transformed_X1 + transformed_X2 +
-#                          transformed_X3  + transformed_X4 +
-#                          transformed_X5 + transformed_X6 +
-#                          transformed_X7 + transformed_X8 +
-#                          transformed_X9) * transformed_X12)
-# anova(transformed_model_geographic_interactions)
-# summary(transformed_model_geographic_interactions)
-# 
-# transformed_model_physician_interactions = lm(transformed_y ~ (transformed_X1 + transformed_X2 +
-#                                                 transformed_X3  + transformed_X4 +
-#                                                 transformed_X5 + transformed_X6 +
-#                                                 transformed_X7 + transformed_X8 +
-#                                                 transformed_X9 + transformed_X10+
-#                                                 transformed_X11 + transformed_X12) * transformed_X5)
-# 
-# anova(transformed_model_physician_interactions)
-# 
-# transformed_model_hospital_beds = lm(transformed_y ~ (transformed_X1 + transformed_X2 +
-#                          transformed_X3  + transformed_X4 +
-#                          transformed_X5 + transformed_X6 +
-#                          transformed_X7 + transformed_X8 +
-#                          transformed_X9 + transformed_X10+
-#                          transformed_X11 + transformed_X12) * transformed_X6)
-# anova(transformed_model_hospital_beds)
-# 
-# transformed_model_highschool =lm(transformed_y ~ (transformed_X1 + transformed_X2 +
-#                                                         transformed_X3  + transformed_X4 +
-#                                                         transformed_X5 + transformed_X6 +
-#                                                         transformed_X7 + transformed_X8 +
-#                                                         transformed_X9 + transformed_X10+
-#                                                         transformed_X11 + transformed_X12) * transformed_X7)
-# anova(transformed_model_highschool)
-# 
-# transformed_model_labor =lm(transformed_y ~ (transformed_X1 + transformed_X2 +
-#                                                     transformed_X3  + transformed_X4 +
-#                                                     transformed_X5 + transformed_X6 +
-#                                                     transformed_X7 + transformed_X8 +
-#                                                     transformed_X9 + transformed_X10+
-#                                                     transformed_X11 + transformed_X12) * transformed_X8)
-# anova(transformed_model_labor)
+#Add nicer code, and comments later
+transformed_model1 = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
+                         transformed_x3  + transformed_x4 +
+                         transformed_x5 + transformed_x6 +
+                         transformed_x7 + transformed_x8 +
+                         transformed_x9 + transformed_x11+
+                         transformed_x12)*transformed_x10)
 
-full_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
-                              transformed_x3  + transformed_x4 +
-                              transformed_x5 + transformed_x6 +
-                              transformed_x7 + transformed_x8 +
-                              transformed_x9 + transformed_x10+
-                              transformed_x11 + transformed_x12 + 
-                              transformed_x1 * transformed_x2 + 
-                              transformed_x1 * transformed_x10 +
-                              transformed_x3 * transformed_x10 +
-                              transformed_x4 * transformed_x10 +
-                              transformed_x1 * transformed_x9 + 
-                              transformed_x6 * transformed_x10 + 
-                              transformed_x1 * transformed_x7 + 
-                              transformed_x4 * transformed_x7 +
-                              transformed_x9 * transformed_x7 +
-                              transformed_x10 * transformed_x7 +
-                              transformed_x12 * transformed_x7 +
-                              transformed_x1 * transformed_x8 +
-                              transformed_x7 * transformed_x9 +
-                              transformed_x7 * transformed_x5 +
-                              transformed_x2 * transformed_x6 + 
-                              transformed_x1 * transformed_x6
-                              )
-summary(full_transformed_model)
+anova(transformed_model1)
 
+# full_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
+#                          transformed_x3  + transformed_x4 +
+#                          transformed_x5 + transformed_x6 +
+#                          transformed_x7 + transformed_x8 +
+#                          transformed_x9 + transformed_x10+
+#                          transformed_x11 + transformed_x12+
+#                            transformed_x5*transformed_x12 +
+#                            transformed_x7*transformed_x11 +
+#                            transformed_x1*transformed_x10 +
+#                            transformed_x2*transformed_x10 + 
+#                            transformed_x3*transformed_x10 +
+#                            transformed_x4*transformed_x10 +
+#                            transformed_x5*transformed_x10
+#                            )
