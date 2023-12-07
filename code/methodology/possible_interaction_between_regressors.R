@@ -41,25 +41,15 @@ transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
                          transformed_x9 + transformed_x10+
                          transformed_x11 + transformed_x12)
 
-summary(transformed_model)
 
-
-transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
-                         transformed_x3  + transformed_x4 +
-                         transformed_x5 + transformed_x6 +
-                         transformed_x7 + transformed_x8 +
-                         transformed_x9 + transformed_x10+
-                         transformed_x11 + transformed_x12)
-
-#Add nicer code, and comments later
-transformed_model1 = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
+transformed_model_interactions = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
                          transformed_x3  + transformed_x4 +
                          transformed_x5 + transformed_x6 +
                          transformed_x7 + transformed_x8 +
                          transformed_x9 + transformed_x11+
                          transformed_x12)*transformed_x10)
 
-anova(transformed_model1)
+anova(transformed_model_interactions)
 
 # full_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
 #                          transformed_x3  + transformed_x4 +

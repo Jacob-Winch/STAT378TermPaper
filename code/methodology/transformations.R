@@ -48,8 +48,9 @@ yhat <- transformed_model$fit
 
 # Q-Q Plot to test for Normality
 par(mfrow=c(1,1))
-qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
-qqline(transformed_model$resid, col=2)
+windows()
+# qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
+# qqline(transformed_model$resid, col=2)
 
 # Plot of Residuals vs fitted values to test for Equal Variance
 plot(transformed_model$fitted, transformed_model$resid, col="blue", xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted Values for Transformed Model")

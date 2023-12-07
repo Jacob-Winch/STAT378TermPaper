@@ -57,12 +57,12 @@ full_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
                            transformed_x5*transformed_x10
                            )
 
-# m0=lm(transformed_y~1)
-# forward=step(m0, direction='forward', scope=formula(full_transformed_model), trace=1)
-# 
-# backward=step(full_transformed_model, direction='backward', scope=formula(full_transformed_model), trace=1)
-# 
-# stepwise=step(m0, direction='both', scope=formula(full_transformed_model), trace=1)
+m0=lm(transformed_y~1)
+forward=step(m0, direction='forward', scope=formula(full_transformed_model), trace=1)
+
+backward=step(full_transformed_model, direction='backward', scope=formula(full_transformed_model), trace=1)
+
+stepwise=step(m0, direction='both', scope=formula(full_transformed_model), trace=1)
 
 # The forward elimination selection process terminates with a final model:
 # We chose the forward selection model since it has the least amount
