@@ -61,10 +61,10 @@ par(mfrow=c(2,2))
 # abline(h=0, col = "red")
 
 # Partial Regression Plots 
-avPlots(model)
+# avPlots(model)
 # 
 # # Partial Residual Plots
-# crPlots(model)
+crPlots(model)
 
 
 

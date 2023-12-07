@@ -42,14 +42,32 @@ transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
                          transformed_x11 + transformed_x12)
 
 
-transformed_model_interactions = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
+transformed_model_interactions_x10 = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
                          transformed_x3  + transformed_x4 +
                          transformed_x5 + transformed_x6 +
                          transformed_x7 + transformed_x8 +
                          transformed_x9 + transformed_x11+
                          transformed_x12)*transformed_x10)
 
-anova(transformed_model_interactions)
+transformed_model_interactions_x11 = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
+                                                           transformed_x3  + transformed_x4 +
+                                                           transformed_x5 + transformed_x6 +
+                                                           transformed_x7 + transformed_x8 +
+                                                           transformed_x9 + transformed_x10+
+                                                           transformed_x12)*transformed_x11)
+
+
+transformed_model_interactions_x12 = lm(transformed_y ~ (transformed_x1 + transformed_x2 +
+                                                           transformed_x3  + transformed_x4 +
+                                                           transformed_x5 + transformed_x6 +
+                                                           transformed_x7 + transformed_x8 +
+                                                           transformed_x9 + transformed_x10+
+                                                           transformed_x11)*transformed_x12)
+
+
+anova(transformed_model_interactions_x10)
+anova(transformed_model_interactions_x11)
+anova(transformed_model_interactions_x12)
 
 # full_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
 #                          transformed_x3  + transformed_x4 +
