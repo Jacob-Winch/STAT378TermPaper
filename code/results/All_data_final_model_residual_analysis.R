@@ -1,8 +1,5 @@
-library(olsrr)
-library(lmtest)
-library(MASS)
-library(car)
-data <- read.table("data/data_estimation_random.txt", header = FALSE)
+
+data <- read.table("data/Term Paper -  Fall 2023 - Data.txt", header = FALSE)
 
 y <- data$V11
 x1 <- data$V2
@@ -10,7 +7,7 @@ x2 <- data$V3
 x3 <- data$V4
 x4 <- data$V5
 x5 <- data$V6
-x6 <- data$V7 
+x6 <- data$V7
 x7 <- data$V8
 x8 <- data$V9
 x9 <- data$V10
@@ -43,13 +40,15 @@ final_transformed_model = lm(transformed_y ~ transformed_x1 + transformed_x2 +
                                transformed_x10 * transformed_x5 +
                                transformed_x10 * transformed_x4)
 
-ols_coll_diag(final_transformed_model)
+t <- rstudent(final_transformed_model)
+yhat <- final_transformed_model$fit
 
-# Q-Q Plot to test for Normality
 par(mfrow=c(1,1))
-qqnorm(final_transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Transformed Model")
-qqline(final_transformed_model$resid, col=2)
+qqnorm(transformed_model$resid, col="blue", main = "Normal Q-Q Plot for Final Transformed Model")
+qqline(transformed_model$resid, col=2)
 
-# Plot of Residuals vs fitted values to test for Equal Variance
-plot(final_transformed_model$fitted, final_transformed_model$resid, col="blue", xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted Values for Transformed Model")
+plot(transformed_model$fitted, transformed_model$resid, col="blue", xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted Values for Final Transformed Model")
 abline(h=0, col="red")
+
+# Breusch-Pagan test for constant variance assumption. 
+bptest(final_transformed_model)
