@@ -60,8 +60,6 @@ m = glmnet(final_transformed_X, transformed_y, alpha = 0, lambda = lambda)
 
 coef(m)
 
-confint(m, level = 0.95)
-
 p = predict(m, s=min(lambda), newx= final_transformed_X)
 
 Rsquared = (cor(transformed_y,p))^2
@@ -73,4 +71,6 @@ SSt = sum((transformed_y - mean(transformed_y))^2)
 Rsquared = 1 - (SSe/SSt)
 Rsquared
 adjusted_Rsquared = 1-((1-Rsquared)*(length(y)-1)/(length(y)-length(coef(m)-1)))
-coef(m)
+adjusted_Rsquared
+
+
