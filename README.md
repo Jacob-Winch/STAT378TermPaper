@@ -5,6 +5,15 @@ It is self-evident that the effective handling of crime is paramount to the well
 
 ## Repository Directory
 ### code
+- methodology: code used in the methodology section of the paper
+  - [`fitting_the_regression_model.R`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/fitting_the_regression_model.R): R script to fit the initial linear regression model
+  - [`possible_interaction_between_regressors.R`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/possible_interaction_between_regressors.R): R script to find possible interaction terms between regressors
+  - [`residual_analysis`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/residual_analysis.R): R script to graphical analyse the residuals to analysis assumptions of the model
+  - [`splitting_the_data_via_duplex.R`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/splitting_the_data_via_duplex.R): R script to split the data into a prediction and estimation set via the DUPLEX algorithm
+  - [`transformations.R`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/transformations.R): R script to determine transformations to satisfy linear regression assumptions
+  - [`variable_selection.R`](https://github.com/Jacob-Winch/STAT378TermPaper/blob/main/code/methodology/variable_selection.R): R script to select the best model.
+
+- results: code used in the results section of the paper
 
 ### data 
 
